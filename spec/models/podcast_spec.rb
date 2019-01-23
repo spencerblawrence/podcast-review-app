@@ -1,7 +1,5 @@
 require 'spec_helper'
-
 describe Podcast do
-
   it { should have_valid(:name).when("Serial") }
   it { should_not have_valid(:name).when(nil, "") }
 
@@ -14,5 +12,4 @@ describe Podcast do
   it { should have_valid(:link).when("https://serialpodcast.org/") }
   it { should_not have_valid(:link).when(nil, "") }
   it { should_not have_valid(:link).when("serialpodcast.org") }
-
 end
