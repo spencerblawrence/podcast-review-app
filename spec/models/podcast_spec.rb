@@ -1,5 +1,8 @@
 require 'spec_helper'
+
 describe Podcast do
+  it { should have_many :reviews }
+
   it { should have_valid(:name).when("Serial") }
   it { should_not have_valid(:name).when(nil, "") }
 
