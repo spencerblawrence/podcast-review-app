@@ -1,4 +1,6 @@
 class Podcast < ApplicationRecord
+  has_many :reviews
+
   validates :name, presence: true
   validates :publisher, presence: true
   validates :description, presence: true
