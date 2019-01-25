@@ -1,7 +1,11 @@
 import React from 'react'
+import PodcastContainer from '../containers/PodcastContainer'
 
 export const App = (props) => {
-  return (<h1>Make It So React</h1>)
+  return (
+    <div>
+      <PodcastContainer />
+    </div>  )
 }
 
 export default App
