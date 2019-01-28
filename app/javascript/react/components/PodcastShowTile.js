@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router";
 
 const PodcastShowTile = props => {
+  debugger;
   return (
     <div className="podcast-show-tile">
       <h2>{props.podcast.name}</h2>
