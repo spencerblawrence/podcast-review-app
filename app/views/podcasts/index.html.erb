@@ -1,5 +1,8 @@
-<h2>All Podcasts</h2>
 
+<h2>All Podcasts</h2>
+<% if current_user && current_user.profile_photo.url%>
+<img src="<%=current_user.profile_photo.url%>">
+<% end %>
 <ul>
   <%@podcasts.each do |podcast| %>
     <li>
