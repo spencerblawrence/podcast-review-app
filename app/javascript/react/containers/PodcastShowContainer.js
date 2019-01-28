@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import PodcastShowTile from "../components/PodcastShowTile";
 import { Link } from "react-router";
 
 class PodcastShowContainer extends Component {
@@ -24,19 +23,20 @@ class PodcastShowContainer extends Component {
       })
       .then(response => response.json())
       .then(podcast => {
+        debugger;
         this.setState({ podcast: podcast["podcasts"][0] });
       })
       .catch(error => console.log(`Error in fetch: ${error.message}`));
   }
 
   render() {
+    debugger;
     return (
       <div>
-        <p>I am the PodcastShowContainer</p>
-        <p>{this.state.podcast.name}</p>
-        <p>{this.state.podcast.description}</p>
+        <h2>{this.state.podcast.name}</h2>
+        <h3>{this.state.podcast.description}</h3>
         <p>{this.state.podcast.publisher}</p>
-        <p>{this.state.podcast.link}</p>
+        <a href={this.state.podcast.link}>Visit Website</a>
       </div>
     );
   }

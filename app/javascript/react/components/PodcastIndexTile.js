@@ -7,7 +7,7 @@ const PodcastIndexTile = props => {
       <h2>{props.podcast.name}</h2>
       <p>{props.podcast.description}</p>
       <Link to={`/podcasts/${props.id}`}>Click Here to Learn More!</Link>
-      <br />
+      <hr />
       <br />
     </div>
   );

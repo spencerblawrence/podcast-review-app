@@ -31,7 +31,6 @@ class PodcastContainer extends Component {
 
     return (
       <div>
-        <p>I am the PodcastContainer</p>
         {podcasts}
         <div />
       </div>

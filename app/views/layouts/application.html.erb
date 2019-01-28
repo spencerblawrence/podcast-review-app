@@ -30,6 +30,10 @@
     </section>
   </nav>
 
+  <% if current_user && current_user.profile_photo.url%>
+  <img src="<%=current_user.profile_photo.url%>">
+  <% end %>
+
   <%- flash.each do |key, value| -%>
     <div class="flash flash-<%= key %>">
       <%= value %>
