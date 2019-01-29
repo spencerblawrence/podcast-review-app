@@ -18,10 +18,6 @@ describe("PodcastTile", () => {
     wrapper = mount(<PodcastIndexTile podcast={podcast} />);
   });
 
-  it("confirms enzyme is working", () => {
-    expect(true).toEqual(true);
-  });
-
   it("renders a h2 tag with the article title", () => {
     expect(wrapper.find("h2").text()).toBe("The Daily");
   });

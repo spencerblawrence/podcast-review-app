@@ -11,15 +11,24 @@ class PodcastContainer extends Component {
   }
 
   componentDidMount() {
-    console.log("componentDidMount");
     fetch("/api/v1/podcasts.json")
+      .then(response => {
+        if (response.ok) {
+          return response;
+        } else {
+          let errorMessage = `${response.status} (${response.statusText})`,
+            error = new Error(errorMessage);
+          throw error;
+        }
+      })
       .then(response => {
         let podcasts = response.json();
         return podcasts;
       })
       .then(podcasts => {
         this.setState({ podcasts: podcasts["podcasts"] });
-      });
+      })
+      .catch(error => console.log(`Error in fetch: ${error.message}`));
   }
 
   render() {
@@ -29,12 +38,7 @@ class PodcastContainer extends Component {
       );
     });
 
-    return (
-      <div>
-        {podcasts}
-        <div />
-      </div>
-    );
+    return <div>{podcasts}</div>;
   }
 }
 

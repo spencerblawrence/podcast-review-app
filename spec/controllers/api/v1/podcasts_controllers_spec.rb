@@ -29,26 +29,4 @@ RSpec.describe Api::V1::PodcastsController, type: :controller do
       expect(returned_json["podcasts"][1]["link"]).to eq ninetyninepi.link
     end
   end
-
-  describe 'POST#create' do
-    let!(:data) { { name: "Radiolab", publisher: "WNYC", description: "Since 2002, Radiolab has been devoted to investigating a strange world.", link: "https://www.wnycstudios.org/shows/radiolab" } }
-
-    it 'add a new podcast to the database' do
-      expect{post :create, body: data.to_json}.to change { Podcast.count }.by 1
-    end
-
-    it 'return the new podcast as json' do
-      post :create, body: data.to_json
-
-      response_body_json = JSON.parse(response.body)
-
-      expect(response.status).to eq 200
-      expect(response.content_type).to eq 'application/json'
-
-      expect(response_body_json["podcast"]["name"]).to eq data[:name]
-      expect(response_body_json["podcast"]["publisher"]).to eq data[:publisher]
-      expect(response_body_json["podcast"]["description"]).to eq data[:description]
-      expect(response_body_json["podcast"]["link"]).to eq data[:link]
-    end
-  end
 end

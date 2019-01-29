@@ -23,14 +23,12 @@ class PodcastShowContainer extends Component {
       })
       .then(response => response.json())
       .then(podcast => {
-        debugger;
         this.setState({ podcast: podcast["podcasts"][0] });
       })
       .catch(error => console.log(`Error in fetch: ${error.message}`));
   }
 
   render() {
-    debugger;
     return (
       <div>
         <h2>{this.state.podcast.name}</h2>

@@ -31,10 +31,6 @@ describe("PodcastShowContainer", () => {
 
   afterEach(fetchMock.restore);
 
-  it("renders a paragraph tag with the description of the podcast", () => {
-    expect(true).toEqual(true);
-  });
-
   it("renders the name of the podcast", done => {
     setTimeout(() => {
       expect(wrapper.find("h2").text()).toBe("The Daily");
