@@ -6,7 +6,7 @@ class Api::V1::PodcastsController < ApplicationController
   end
 
   def show
-    render json: Podcast.where(id: params[:id])
+    render json: Podcast.find(params[:id])
   end
 
 end

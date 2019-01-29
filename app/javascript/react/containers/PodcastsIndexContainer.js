@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import PodcastIndexTile from "../components/PodcastIndexTile";
 import { Link } from "react-router";
 
-class PodcastContainer extends Component {
+class PodcastsIndexContainer extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -11,7 +11,7 @@ class PodcastContainer extends Component {
   }
 
   componentDidMount() {
-    fetch("/api/v1/podcasts.json")
+    fetch("/api/v1/podcasts")
       .then(response => {
         if (response.ok) {
           return response;
@@ -42,4 +42,4 @@ class PodcastContainer extends Component {
   }
 }
 
-export default PodcastContainer;
+export default PodcastsIndexContainer;
