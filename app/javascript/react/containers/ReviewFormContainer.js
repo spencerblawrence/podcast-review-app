@@ -18,8 +18,8 @@ class ReviewFormContainer extends Component {
   handleSubmit(event) {
     event.preventDefault();
     let formPayload = {
-      title: this.state.rating,
-      body: this.state.reviewBody
+      rating: this.state.rating,
+      reviewBody: this.state.reviewBody
     };
     this.props.addNewReview(formPayload);
     this.handleClear();
@@ -41,7 +41,7 @@ class ReviewFormContainer extends Component {
       <form className="new-article-form callout" onSubmit={this.handleSubmit}>
         <RatingField
           content={this.state.rating}
-          label="Rating"
+          label="Rating (1-5)"
           name="rating"
           handleChange={this.handleChange}
         />
