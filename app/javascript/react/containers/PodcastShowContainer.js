@@ -59,14 +59,10 @@ class PodcastShowContainer extends Component {
           throw error;
         }
       })
-      .then(response => {
-        let newReview = response.json();
-        return newReview;
-        debugger;
-      })
+      .then(response => response.json())
       .then(newReview => {
-        debugger;
-        this.setState({ reviews: [...this.state.reviews, newReview] });
+        let currentReviews = this.state.reviews;
+        this.setState({ reviews: currentReviews.concat(newReview.review) });
       })
       .catch(error => console.log(`Error in fetch: ${error.message}`));
   }

@@ -6,6 +6,7 @@ const ReviewTile = props => {
     <div className="review-tile">
       <p>Rating: {props.review.rating}</p>
       <p>Review: {props.review.body}</p>
+      <hr />
     </div>
   );
 };
