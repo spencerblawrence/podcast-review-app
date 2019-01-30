@@ -26,5 +26,4 @@ class PodcastsController < ApplicationController
   def podcast_params
     params.require(:podcast).permit(:name, :description, :publisher, :link)
   end
-
 end
