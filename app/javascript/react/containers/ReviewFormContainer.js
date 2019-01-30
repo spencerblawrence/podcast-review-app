@@ -6,8 +6,8 @@ class ReviewFormContainer extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      rating: null,
-      reviewBody: ""
+      rating: "",
+      body: ""
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -19,7 +19,8 @@ class ReviewFormContainer extends Component {
     event.preventDefault();
     let formPayload = {
       rating: this.state.rating,
-      reviewBody: this.state.reviewBody
+      body: this.state.body,
+      podcast_id: this.props.podcastId
     };
     this.props.addNewReview(formPayload);
     this.handleClear();
@@ -27,8 +28,8 @@ class ReviewFormContainer extends Component {
 
   handleClear() {
     this.setState({
-      rating: null,
-      reviewBody: ""
+      rating: "",
+      body: ""
     });
   }
 
@@ -38,7 +39,7 @@ class ReviewFormContainer extends Component {
 
   render() {
     return (
-      <form className="new-article-form callout" onSubmit={this.handleSubmit}>
+      <form className="new-review-form callout" onSubmit={this.handleSubmit}>
         <RatingField
           content={this.state.rating}
           label="Rating (1-5)"
@@ -46,9 +47,9 @@ class ReviewFormContainer extends Component {
           handleChange={this.handleChange}
         />
         <BodyField
-          content={this.state.articleBody}
+          content={this.state.body}
           label="Review Body"
-          name="review-body"
+          name="body"
           handleChange={this.handleChange}
         />
 
