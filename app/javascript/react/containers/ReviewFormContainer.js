@@ -53,10 +53,10 @@ class ReviewFormContainer extends Component {
         />
 
         <div className="button-group">
-          <button className="button" onClick={this.handleClear}>
+          <button className="button radius" onClick={this.handleClear}>
             Clear
           </button>
-          <input className="button" type="submit" value="Submit" />
+          <input className="button radius" type="submit" value="Submit" />
         </div>
       </form>
     );

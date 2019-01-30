@@ -3,13 +3,15 @@ import { Link } from "react-router";
 
 const PodcastIndexTile = props => {
   return (
-    <div>
-      <h2>{props.podcast.name}</h2>
-      <p>{props.podcast.description}</p>
-      <Link to={`/podcasts/${props.id}`}>Click Here to Learn More!</Link>
-      <hr />
-      <br />
-    </div>
+    <Link to={`/podcasts/${props.id}`}>
+      <div className="index-tile-wrapper small-6 columns">
+        <div className="podcast-index-tile">
+          <h2 className="title">{props.podcast.name}</h2>
+          <p className="index-tile-text">{props.podcast.description}</p>
+          <br />
+        </div>
+      </div>
+    </Link>
   );
 };
 

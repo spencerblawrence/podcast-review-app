@@ -38,7 +38,11 @@ class PodcastsIndexContainer extends Component {
       );
     });
 
-    return <div>{podcasts}</div>;
+    return (
+      <div className="row">
+        {podcasts}
+      </div>
+    )
   }
 }
 
