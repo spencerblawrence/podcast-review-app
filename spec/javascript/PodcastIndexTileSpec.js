@@ -2,8 +2,11 @@ import PodcastIndexTile from "../../app/javascript/react/components/PodcastIndex
 
 describe("PodcastTile", () => {
   let wrapper;
+  let props;
 
   beforeEach(() => {
+    let props;
+
     let podcast = {
       name: "The Daily",
       publisher: "The New York Times",
