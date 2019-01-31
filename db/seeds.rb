@@ -18,14 +18,15 @@ Genre.create!(name: "Sports & Recreation")
 Genre.create!(name: "Technology")
 
 user_list = [
-  [ "bob@gmail.com", "password", "password" ],
-  [ "frank@gmail.com", "password", "password" ],
-  [ "mary@gmail.com", "password", "password" ],
-  [ "jane@gmail.com", "password", "password" ]
+  [ "bob@gmail.com", "password", "password", "member", false ],
+  [ "frank@gmail.com", "password", "password", "member", false ],
+  [ "mary@gmail.com", "password", "password", "member", false ],
+  [ "jane@gmail.com", "password", "password", "member", false ],
+  [ "admin@gmail.com", "password", "password", "admin", true ]
 ]
 
-user_list.each do |email, password, password_confirmation|
-  User.create( email: email, password: password, password_confirmation: password_confirmation )
+user_list.each do |email, password, password_confirmation, role, admin_status|
+  User.create( email: email, password: password, password_confirmation: password_confirmation, role: role, admin: admin_status )
 end
 
 pop_culture_happy_hour = Podcast.create!(name: "Pop Culture Happy Hour", publisher: "NPR", description: "Pop Culture Happy Hour is a fun and freewheeling chat about the latest movies, television, books, comics and music.", link: "https://www.npr.org/podcasts/510282/pop-culture-happy-hour", image: "https://s3.amazonaws.com/podcast-review-app-development/podcast-images/pchh.jpg")

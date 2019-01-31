@@ -1,5 +1,6 @@
 class PodcastsController < ApplicationController
-  before_action :authorize_user, except: [:index, :show]
+  before_action :authorize_user, except: [:index, :show, :new, :create]
+  before_action :authorize_admin, only: [:edit]
 
   def index
     @podcasts = Podcast.all
@@ -49,7 +50,14 @@ class PodcastsController < ApplicationController
   end
 
   def authorize_user
-    if !user_signed_in?
+    if current_user == nil
+      flash[:notice] = "You do not have access to this page."
+      redirect_to root_path
+    end
+  end
+
+  def authorize_admin
+    if !current_user.admin?
       flash[:notice] = "You do not have access to this page."
       redirect_to root_path
     end

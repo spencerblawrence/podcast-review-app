@@ -7,7 +7,7 @@ class Api::V1::ReviewsController < ApplicationController
     if review.save
       render json: review
     else
-      render json: { error: review.errors }
+      render json: { error: review.errors.full_messages }
     end
   end
 
