@@ -10,6 +10,6 @@ export const App = props => {
       <Route path="/podcasts/:id" component={PodcastShowContainer} />
     </Router>
   );
-};
+};         
 
 export default App;

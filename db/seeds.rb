@@ -8,14 +8,14 @@
 
 
 
-Genre.create!(name: "Arts")
-Genre.create!(name: "Business")
-Genre.create!(name: "Comedy")
-Genre.create!(name: "Games & Hobbies")
-Genre.create!(name: "Health")
-Genre.create!(name: "News & Politics")
-Genre.create!(name: "Sports & Recreation")
-Genre.create!(name: "Technology")
+Genre.find_or_create_by!(name: "Arts")
+Genre.find_or_create_by!(name: "Business")
+Genre.find_or_create_by!(name: "Comedy")
+Genre.find_or_create_by!(name: "Games & Hobbies")
+Genre.find_or_create_by!(name: "Health")
+Genre.find_or_create_by!(name: "News & Politics")
+Genre.find_or_create_by!(name: "Sports & Recreation")
+Genre.find_or_create_by!(name: "Technology")
 
 user_list = [
   [ "bob@gmail.com", "password", "password" ],
