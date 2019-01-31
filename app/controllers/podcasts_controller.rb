@@ -1,6 +1,11 @@
 class PodcastsController < ApplicationController
+  # before_action :authorize_user, except: [:index, :show]
   def index
     @podcasts = Podcast.all
+  end
+
+  def show
+    @podcast = Podcast.find(params[:id])
   end
 
   def new
@@ -18,12 +23,33 @@ class PodcastsController < ApplicationController
     end
   end
 
-  def show
+  def edit
     @podcast = Podcast.find(params[:id])
+  end
+
+  def update
+    @podcast = Podcast.find(params[:id])
+    if @podcast.update(podcast_params)
+      redirect_to @podcast, notice: "Podcast was successfully updated."
+    else
+      render :edit
+    end
+  end
+
+  def destroy
+    @podcast = Podcast.find(params[:id])
+    @podcast.destroy
+    redirect_to podcasts_path, notice:  "Podcast was successfully deleted."
   end
 
   private
   def podcast_params
     params.require(:podcast).permit(:name, :description, :publisher, :link, :image)
   end
+
+  # def authorize_user
+  #   if !user_signed_in?
+  #     raise ActionController::RoutingError.new("Not Found")
+  #   end
+  # end
 end

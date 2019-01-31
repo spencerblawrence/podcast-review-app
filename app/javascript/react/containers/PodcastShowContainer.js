@@ -93,6 +93,9 @@ class PodcastShowContainer extends Component {
         <div>
           {reviews}
         </div>
+        <div className="button-group admin-buttons">
+          <a href={`/podcasts/${this.props.params.id}/edit`}>Edit</a>
+        </div>
       </div>
     );
   }
