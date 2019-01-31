@@ -16,6 +16,7 @@ describe("PodcastShowContainer", () => {
         description:
           "This is how the news should sound. Twenty minutes a day, five days a week, hosted by Michael Barbaro and powered by New York Times journalism.",
         link: "https://www.nytimes.com/column/the-daily",
+        image: "https://s3.amazonaws.com/podcast-review-app-development/podcast-images/thedaily.png",
         reviews: [
           {
             id: 1,
@@ -35,6 +36,16 @@ describe("PodcastShowContainer", () => {
   });
 
   afterEach(fetchMock.restore);
+
+  it("renders the image of the podcast", done => {
+    setTimeout(() => {
+      expect(wrapper.find("img").props()).toEqual({
+        className: "podcast-show-image",
+        src: "https://s3.amazonaws.com/podcast-review-app-development/podcast-images/thedaily.png"
+      });
+      done();
+    }, 0);
+  });
 
   it("renders the name of the podcast", done => {
     setTimeout(() => {
@@ -59,7 +70,7 @@ describe("PodcastShowContainer", () => {
           .find("p")
           .first()
           .text()
-      ).toBe("The New York Times");
+      ).toBe("Publisher: The New York Times");
       done();
     }, 0);
   });
@@ -67,6 +78,7 @@ describe("PodcastShowContainer", () => {
   it("renders the link to the podcast", done => {
     setTimeout(() => {
       expect(wrapper.find("a").props()).toEqual({
+        id: "podcast-show-link",
         href: "https://www.nytimes.com/column/the-daily",
         children: "Visit Website"
       });

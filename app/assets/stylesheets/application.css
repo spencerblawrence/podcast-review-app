@@ -128,10 +128,39 @@
   padding: 10px;
   margin: 10px;
   font-family: 'Nunito', sans-serif;
-  text-align: center;
+  text-align: left;
 }
 
 .podcast-show-container {
   margin: auto;
   max-width: 600px;
+}
+
+#submit-podcast-button {
+  background-color: #99efd9;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: auto;
+  margin-top: 10px;
+  margin-bottom: 20px;
+  font-size: 20px;
+  border: 1px solid black;
+}
+
+#submit-podcast-button:hover {
+  background-color: #6AB09E;
+}
+
+.podcast-new-form-container {
+  padding: 10px;
+  margin: auto;
+  max-width: 600px;
+  font-family: 'Nunito', sans-serif;
+}
+
+.new-podcast-form-title {
+  font-family: 'Nunito', sans-serif;
+  margin: auto;
 }
