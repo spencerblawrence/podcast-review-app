@@ -1,5 +1,6 @@
 class PodcastsController < ApplicationController
-  # before_action :authorize_user, except: [:index, :show]
+  before_action :authorize_user, except: [:index, :show]
+
   def index
     @podcasts = Podcast.all
   end
@@ -47,9 +48,10 @@ class PodcastsController < ApplicationController
     params.require(:podcast).permit(:name, :description, :publisher, :link, :image)
   end
 
-  # def authorize_user
-  #   if !user_signed_in?
-  #     raise ActionController::RoutingError.new("Not Found")
-  #   end
-  # end
+  def authorize_user
+    if !user_signed_in?
+      flash[:notice] = "You do not have access to this page."
+      redirect_to root_path
+    end
+  end
 end
