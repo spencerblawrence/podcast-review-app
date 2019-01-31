@@ -1,4 +1,5 @@
 class Api::V1::PodcastsController < ApplicationController
+  serialization_scope :current_user
   protect_from_forgery unless: -> { request.format.json? }
 
   def index
@@ -8,5 +9,4 @@ class Api::V1::PodcastsController < ApplicationController
   def show
     render json: Podcast.find(params[:id])
   end
-
 end

@@ -7,7 +7,6 @@ const RatingField = props => {
       <input
         name={props.name}
         type="text"
-        pattern="[0-9]*"
         value={props.content}
         onChange={props.handleChange}
       />

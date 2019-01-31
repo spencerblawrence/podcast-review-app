@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router";
-import ReviewTile from '../components/ReviewTile';
-import ReviewFormContainer from './ReviewFormContainer';
+import ReviewTile from "../components/ReviewTile";
+import ReviewFormContainer from "./ReviewFormContainer";
 
 class PodcastShowContainer extends Component {
   constructor(props) {
@@ -44,16 +44,29 @@ class PodcastShowContainer extends Component {
 
   addNewReview(formPayload) {
     fetch("/api/v1/reviews", {
+      credentials: "same-origin",
       method: "POST",
-      body: JSON.stringify(formPayload)
+      body: JSON.stringify(formPayload),
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json"
+      }
     })
-    .then(response => {
-      let newReview = response.json();
-      return newReview;
-    })
-    .then(newReview => {
-      this.setState({ reviews: [...this.state.reviews, newReview] });
-    });
+      .then(response => {
+        if (response.ok) {
+          return response;
+        } else {
+          let errorMessage = `${response.status} (${response.statusText})`,
+            error = new Error(errorMessage);
+          throw error;
+        }
+      })
+      .then(response => response.json())
+      .then(newReview => {
+        let currentReviews = this.state.reviews;
+        this.setState({ reviews: currentReviews.concat(newReview.review) });
+      })
+      .catch(error => console.log(`Error in fetch: ${error.message}`));
   }
 
   render() {
@@ -72,7 +85,10 @@ class PodcastShowContainer extends Component {
         </div>
         <div className="podcast-review-form-container">
           <p>Add a Review!</p>
-          <ReviewFormContainer addNewReview={this.addNewReview} />
+          <ReviewFormContainer
+            addNewReview={this.addNewReview}
+            podcastId={this.props.params.id}
+            />
         </div>
         <div>
           {reviews}

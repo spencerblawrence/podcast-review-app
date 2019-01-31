@@ -1,13 +1,9 @@
 class Api::V1::ReviewsController < ApplicationController
-
-  def new
-    binding.pry
-  end
+  protect_from_forgery unless: -> { request.format.json? }
 
   def create
-    binding.pry
-    review = Review.create(review_params)
-
+    review = Review.new(review_params)
+    review.user = current_user
     if review.save
       render json: review
     else
@@ -17,6 +13,6 @@ class Api::V1::ReviewsController < ApplicationController
 
   private
   def review_params
-    params.require(:review).permit(:rating, :body)
+    params.require(:review).permit(:rating, :body, :podcast_id)
   end
 end

@@ -20,6 +20,7 @@
 
     <section class="top-bar-section">
       <ul class="right">
+
         <%- if current_user -%>
           <li class="devise-nav-bar"><%= link_to 'Sign Out', destroy_user_session_path, method: :delete %></li>
         <%- else -%>
@@ -30,10 +31,11 @@
     </section>
   </nav>
 
+<div>
   <% if current_user && current_user.profile_photo.url%>
   <img class=“prof-pic” src="<%=current_user.profile_photo.url%>">
   <% end %>
-
+</div>
   <%- flash.each do |key, value| -%>
     <div class="flash flash-<%= key %>">
       <%= value %>
