@@ -15,3 +15,152 @@
  *= require foundation_and_overrides
 
  */
+
+* {
+  font-family: 'Nunito', sans-serif;
+}
+
+.top-bar {
+  background-color: #6AB09E;
+}
+
+.top-bar-section li:not(.has-form) a:not(.button) {
+  font-family: 'Nunito', sans-serif;
+  background-color: #6AB09E;
+}
+
+.prof-pic {
+  height: 300px;
+  margin: 15px;
+}
+
+.title {
+  font-family: 'Nunito', sans-serif;
+}
+
+#main-yield-box {
+  align-content: center;
+  margin: 10px;
+  padding: 10px;
+}
+
+.flex-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.podcast-index-tile {
+  height: 250px;
+  border: 2px solid black;
+  border-radius: 10px;
+  padding: 10px;
+  margin: 10px;
+  overflow: hidden;
+}
+
+.podcast-index-tile:hover {
+  background-color: #6AB09E;
+}
+
+.podcast-show-tile {
+  padding: 10px;
+  margin: 10px;
+  font-family: 'Nunito', sans-serif;
+  text-align: center;
+}
+
+.index-tile-text {
+  color: black;
+}
+
+.index-tile-wrapper {
+  padding: 0px;
+}
+
+.podcast-show-title {
+  text-align: center;
+  font-family: 'Nunito', sans-serif;
+}
+
+.podcast-show-text {
+  text-align: center;
+  font-size: 16px;
+  font-family: 'Nunito', sans-serif;
+}
+
+#podcast-show-link {
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: auto;
+  font-family: 'Nunito', sans-serif;
+  display: block;
+}
+
+.podcast-show-image {
+  display:block;
+  margin: auto;
+  width: 70%;
+  max-width: 450px;
+}
+
+.podcast-review-form-container {
+  padding: 10px;
+  margin: 10px;
+  font-family: 'Nunito', sans-serif;
+}
+
+.button-group {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: auto;
+}
+
+.button {
+  margin: 10px;
+  font-family: 'Nunito', sans-serif;
+}
+
+.review-tile {
+  padding: 10px;
+  margin: 10px;
+  font-family: 'Nunito', sans-serif;
+  text-align: left;
+}
+
+.podcast-show-container {
+  margin: auto;
+  max-width: 600px;
+}
+
+#submit-podcast-button {
+  background-color: #99efd9;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: auto;
+  margin-top: 10px;
+  margin-bottom: 20px;
+  font-size: 20px;
+  border: 1px solid black;
+}
+
+#submit-podcast-button:hover {
+  background-color: #6AB09E;
+}
+
+.podcast-new-form-container {
+  padding: 10px;
+  margin: auto;
+  max-width: 600px;
+  font-family: 'Nunito', sans-serif;
+}
+
+.new-podcast-form-title {
+  font-family: 'Nunito', sans-serif;
+  margin: auto;
+}

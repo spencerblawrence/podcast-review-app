@@ -3,7 +3,7 @@ require 'rails_helper'
 
 RSpec.describe Api::V1::ReviewsController, type: :controller do
   describe 'POST#create' do
-    let!(:podcast) { Podcast.create!(name: "Radiolab", publisher: "WNYC", description: "Since 2002, Radiolab has been devoted to investigating a strange world.", link: "https://www.wnycstudios.org/shows/radiolab") }
+    let!(:podcast) { Podcast.create!(name: "Radiolab", publisher: "WNYC", description: "Since 2002, Radiolab has been devoted to investigating a strange world.", link: "https://www.wnycstudios.org/shows/radiolab", image: "https://s3.amazonaws.com/podcast-review-app-development/podcast-images/radiolab.png") }
     let!(:review) { {review: {body: "Such an amazing podcast. Definitely recommend it", rating: 5, podcast_id: podcast.id} } }
     let!(:user) { User.create( email: 'user@gmail.com', password: 'password', password_confirmation: 'password') }
 
