@@ -18,15 +18,15 @@ Genre.create!(name: "Sports & Recreation")
 Genre.create!(name: "Technology")
 
 user_list = [
-  [ "bob@gmail.com", "password", "password", "member", false ],
-  [ "frank@gmail.com", "password", "password", "member", false ],
-  [ "mary@gmail.com", "password", "password", "member", false ],
-  [ "jane@gmail.com", "password", "password", "member", false ],
-  [ "admin@gmail.com", "password", "password", "admin", true ]
+  [ "bob@gmail.com", "password", "password", false, "Bob", "Hope", "https://s3.amazonaws.com/podcast-review-app-development/podcast-images/250px-006Charizard.png" ],
+  [ "frank@gmail.com", "password", "password", false, "Frank", "Gehry", "https://s3.amazonaws.com/podcast-review-app-development/podcast-images/250px-006Charizard.png" ],
+  [ "mary@gmail.com", "password", "password", false, "Mary", "Lou", "https://s3.amazonaws.com/podcast-review-app-development/podcast-images/250px-006Charizard.png" ],
+  [ "jane@gmail.com", "password", "password", false, "Jane", "Adams", "https://s3.amazonaws.com/podcast-review-app-development/podcast-images/250px-006Charizard.png" ],
+  [ "admin@gmail.com", "password", "password", true, "Rebecca", "Williams", "https://s3.amazonaws.com/podcast-review-app-development/podcast-images/char-pikachu.png" ]
 ]
 
-user_list.each do |email, password, password_confirmation, role, admin_status|
-  User.create( email: email, password: password, password_confirmation: password_confirmation, role: role, admin: admin_status )
+user_list.each do |email, password, password_confirmation, admin_status, first_name, last_name, profile_photo|
+  User.create( email: email, password: password, password_confirmation: password_confirmation, admin: admin_status, first_name: first_name, last_name: last_name, profile_photo: profile_photo )
 end
 
 pop_culture_happy_hour = Podcast.create!(name: "Pop Culture Happy Hour", publisher: "NPR", description: "Pop Culture Happy Hour is a fun and freewheeling chat about the latest movies, television, books, comics and music.", link: "https://www.npr.org/podcasts/510282/pop-culture-happy-hour", image: "https://s3.amazonaws.com/podcast-review-app-development/podcast-images/pchh.jpg")
@@ -45,6 +45,18 @@ pop_culture_happy_hour_review_1 = Review.create!(
   rating: 5,
   podcast: pop_culture_happy_hour,
   user_id: 1)
+
+pop_culture_happy_hour_review_2 = Review.create!(
+  body: "This is a really great podcast that covers all the best items. I love the panel, they are so engaging and dynamic. Linda Holmes is FANTASTIC! Highly recommend.",
+  rating: 5,
+  podcast: pop_culture_happy_hour,
+  user_id: 2)
+
+pop_culture_happy_hour_review_3 = Review.create!(
+  body: "I'm not crazy about this podcast. I don't really like the editing, I think they could be a lot more succint with their coverage. However I do think Linda Holmes does a great job.",
+  rating: 2,
+  podcast: pop_culture_happy_hour,
+  user_id: 3)
 
 the_bill_simmons_podcast_review_1 = Review.create!(
   body: "I really like this podcast from Bill Simmons, as an active listener, he gives insightful thought in conversing with many different celebrities and also athletes. I like how he pitches himself and also his enthusiasm.",

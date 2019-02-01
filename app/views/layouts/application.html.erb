@@ -31,11 +31,12 @@
     </section>
   </nav>
 
-<div>
-  <% if current_user && current_user.profile_photo.url%>
-  <img class="prof-pic" src="<%=current_user.profile_photo.url%>">
-  <% end %>
-</div>
+  <div>
+    <% if current_user && current_user.profile_photo.url%>
+      <img class="prof-pic" src="<%=current_user.profile_photo.url%>">
+    <% end %>
+  </div>
+
   <%- flash.each do |key, value| -%>
     <div class="flash flash-<%= key %>">
       <%= value %>
