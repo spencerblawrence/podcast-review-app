@@ -77,7 +77,7 @@ describe("PodcastShowContainer", () => {
 
   it("renders the link to the podcast", done => {
     setTimeout(() => {
-      expect(wrapper.find("a").props()).toEqual({
+      expect(wrapper.find("a").first().props()).toEqual({
         id: "podcast-show-link",
         href: "https://www.nytimes.com/column/the-daily",
         children: "Visit Website"

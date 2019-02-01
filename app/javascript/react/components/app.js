@@ -8,6 +8,7 @@ export const App = props => {
     <Router history={browserHistory}>
       <Route path="/" component={PodcastsIndexContainer} />
       <Route path="/podcasts/:id" component={PodcastShowContainer} />
+      <Route path="/podcasts/:id/edit" component={PodcastShowContainer} />
     </Router>
   );
 };         

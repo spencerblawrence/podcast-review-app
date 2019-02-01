@@ -1,0 +1,41 @@
+<div class="podcast-new-form-container">
+  <h2 class="new-podcast-form-title">Edit Podcast</h2>
+
+  <ul>
+    <%@podcast.errors.full_messages.each do |message| %>
+    <li><%= message %></li>
+    </ul>
+  <%end%>
+
+  <%= form_for(@podcast) do |f|%>
+
+  <div>
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </div>
+
+  <div>
+    <%= f.label :publisher %><br />
+    <%= f.text_field :publisher %>
+  </div>
+
+  <div>
+    <%= f.label :description %><br />
+    <%= f.text_field :description %>
+  </div>
+
+  <div>
+    <%= f.label :link %><br />
+    <%= f.text_field :link %>
+  </div>
+
+  <div>
+    <%= f.label :image, "Image URL" %><br />
+    <%= f.text_field :image %>
+  </div>
+
+  <div>
+    <%= f.submit "Update Podcast" %>
+  </div>
+  <%end%>
+</div>

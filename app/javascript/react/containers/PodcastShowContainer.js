@@ -12,7 +12,9 @@ class PodcastShowContainer extends Component {
       publisher: "",
       link: "",
       image: "",
-      reviews: []
+      reviews: [],
+      errors: [],
+      user_id: null
     };
     this.addNewReview = this.addNewReview.bind(this);
   }
@@ -36,7 +38,8 @@ class PodcastShowContainer extends Component {
         publisher: podcast["podcast"]["publisher"],
         link: podcast["podcast"]["link"],
         image: podcast["podcast"]["image"],
-        reviews: podcast["podcast"]["reviews"]
+        reviews: podcast["podcast"]["reviews"],
+        user_id: podcast["podcast"]["user_id"]
       });
     })
     .catch(error => console.log(`Error in fetch: ${error.message}`));
@@ -63,8 +66,13 @@ class PodcastShowContainer extends Component {
       })
       .then(response => response.json())
       .then(newReview => {
-        let currentReviews = this.state.reviews;
-        this.setState({ reviews: currentReviews.concat(newReview.review) });
+        if (newReview.error) {
+          this.setState({ errors: newReview.error });
+        }
+        else {
+          let currentReviews = this.state.reviews;
+          this.setState({ reviews: currentReviews.concat(newReview.review) });
+        };
       })
       .catch(error => console.log(`Error in fetch: ${error.message}`));
   }
@@ -73,6 +81,24 @@ class PodcastShowContainer extends Component {
     let reviews = this.state.reviews.map(review => {
       return <ReviewTile key={review.id} review={review} />;
     });
+
+    let errorDiv
+    let errors
+    if (this.state.errors.length > 0) {
+      errors = this.state.errors.map(error => {
+        return <li key={error}>{error}</li>;
+      });
+      errorDiv = <div>{errors}</div>
+    }
+
+    let reviewFormContainer = null
+    if (this.state.user_id !== null) {
+      reviewFormContainer =
+        <ReviewFormContainer
+          addNewReview={this.addNewReview}
+          podcastId={this.props.params.id}
+          />
+      }
 
     return (
       <div className="podcast-show-container">
@@ -84,14 +110,14 @@ class PodcastShowContainer extends Component {
           <a id="podcast-show-link" href={this.state.link}>Visit Website</a>
         </div>
         <div className="podcast-review-form-container">
-          <p>Add a Review!</p>
-          <ReviewFormContainer
-            addNewReview={this.addNewReview}
-            podcastId={this.props.params.id}
-            />
+          {errorDiv}
+          {reviewFormContainer}
         </div>
         <div>
           {reviews}
+        </div>
+        <div className="button-group admin-buttons">
+          <a href={`/podcasts/${this.props.params.id}/edit`}>Edit Podcast</a>
         </div>
       </div>
     );
